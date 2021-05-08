@@ -1,0 +1,36 @@
+<div>
+  <form clrForm [formGroup]="form" (ngSubmit)="submit()" class="form-main">
+    <div>
+      <app-fundooheader fxLayout="column" fxLayoutAlign="space-around center"></app-fundooheader>
+      <div fxLayout="column" fxLayoutAlign="space-around center">
+        <h2>Login</h2>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="space-around center">
+        <h3>Use your Fundoo account</h3>
+      </div>
+      <div class="email" fxLayout="row" fxLayoutAlign="start center">
+        <clr-input-container>
+          <input clrInput formControlName="email" placeholder="Enter Email" name="email" required />
+          <label>Email</label>
+          <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+        </clr-input-container>
+      </div>
+      <div class="password" fxLayout="row" fxLayoutAlign="start center">
+        <clr-password-container>
+          <label>Pasword</label>
+          <input placeholder="Enter Password" formControlName="password" clrPassword name="password" />
+          <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+          <clr-control-error *clrIfError="'minlength'">It must be at least 8 characters!</clr-control-error>
+        </clr-password-container>
+      </div>
+      <div>
+        <p>Not your Computer?</p>
+        <a href="">Learn More</a>
+      </div><br><br>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <a href="">Create Account</a>
+        <button type="submit" class="btn btn-primary">Next</button>
+      </div>
+    </div>
+  </form>
+</div>

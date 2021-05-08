@@ -1,0 +1,61 @@
+<div class="form-content" >
+  <form clrForm [formGroup]="form" (ngSubmit)="submit()" clrLayout="vertical" action="" class="form">
+      <app-fundooheader></app-fundooheader>
+      <div>
+          <div class="head">
+              <h2>Create Your Fundoo Account</h2>
+          </div>
+          <div class="name">
+              <clr-input-container>
+                  <input clrInput formControlName="fname" placeholder="Enter FirstName" name="fname" required />
+                  <label>FirstName</label>
+                  <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+              </clr-input-container>
+          </div>
+          <div class="name">
+              <clr-input-container>
+                  <input clrInput formControlName="lname" placeholder="Enter LastName" name="lname" required />
+                  <label>LastName</label>
+                  <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+              </clr-input-container>
+          </div>
+          <div class="email">
+              <clr-input-container>
+                  <label>Username</label>
+                  <input clrInput formControlName="email" placeholder="Enter Email" name="email" required />
+                  <clr-control-helper>You can use letters, numbers & periods
+                  </clr-control-helper>
+                  <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+              </clr-input-container>
+          </div>
+          <div class="passwd">
+              <clr-password-container>
+                  <label>Password</label>
+                  <input placeholder="Password" clrPassword formControlName="password" name="password" required minlength="10" />
+                  <clr-control-helper>Use 8 or more characters with <br />
+                      a mix of letters, numbers & symbols
+                  </clr-control-helper>
+                  <clr-control-error *clrIfError="'required'">This field is required!
+                  </clr-control-error>
+                  <clr-control-error *clrIfError="'minlength'">It must be at least 8 characters!
+                  </clr-control-error>
+              </clr-password-container>
+          </div>
+          <div class="passwd">
+              <clr-password-container>
+                  <label>Confirm</label>
+                  <input placeholder="Password" clrPassword formControlName="password" name="password" required />
+                  <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+              </clr-password-container>
+          </div>
+          <br>
+          <div class="lastline">
+              <a href="" class="line">Sign in instead</a>
+                  <button class="btn btn-primary" >Next</button>
+          </div>
+      </div>
+  </form>
+  <div class="logo">
+      <img src="../../assets/image/Capture.PNG" alt="image" height=250px width=200px>
+  </div>
+</div>
