@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from  '../../services/user/user.service';
 
+const REGEXEMAIL = new RegExp("^[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-])*@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*$");
+
 @Component({
   selector: 'app-forgotpassword',
   templateUrl: './forgotpassword.component.html',
@@ -13,7 +15,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,  private userService: UserService) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email],Validators.pattern(REGEXEMAIL)],
     });
   }
 

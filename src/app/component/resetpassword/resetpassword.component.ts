@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from  '../../services/user/user.service';
 
+const REGEXPASSWORd = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}");
+
 @Component({
   selector: 'app-resetpassword',
   templateUrl: './resetpassword.component.html',
@@ -13,7 +15,7 @@ export class ResetpasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.form = this.formBuilder.group({
-      password: ['', Validators.required]
+      password: ['', Validators.required,Validators.pattern(REGEXPASSWORd)]
     });
   }
 

@@ -9,7 +9,7 @@ export class HttpService {
 
   baseurl = environment.baseurl;
   constructor(private httpClient: HttpClient) { }
-
+    
   post(url : any,data : any){
     return this.httpClient.post(this.baseurl + url , data);
   }

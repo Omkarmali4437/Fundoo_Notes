@@ -9,14 +9,14 @@
               <clr-input-container>
                   <input clrInput formControlName="fname" placeholder="Enter FirstName" name="fname" required />
                   <label>FirstName</label>
-                  <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+                  <clr-control-error *clrIfError="'required'">FirstName is required!</clr-control-error>
               </clr-input-container>
           </div>
           <div class="name">
               <clr-input-container>
                   <input clrInput formControlName="lname" placeholder="Enter LastName" name="lname" required />
                   <label>LastName</label>
-                  <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+                  <clr-control-error *clrIfError="'required'">LastName is required!</clr-control-error>
               </clr-input-container>
           </div>
           <div class="email">
@@ -25,7 +25,7 @@
                   <input clrInput formControlName="email" placeholder="Enter Email" name="email" required />
                   <clr-control-helper>You can use letters, numbers & periods
                   </clr-control-helper>
-                  <clr-control-error *clrIfError="'required'">This field is required!</clr-control-error>
+                  <clr-control-error *clrIfError="'required'">Email is required!</clr-control-error>
               </clr-input-container>
           </div>
           <div class="passwd">
@@ -35,10 +35,8 @@
                   <clr-control-helper>Use 8 or more characters with <br />
                       a mix of letters, numbers & symbols
                   </clr-control-helper>
-                  <clr-control-error *clrIfError="'required'">This field is required!
-                  </clr-control-error>
-                  <clr-control-error *clrIfError="'minlength'">It must be at least 8 characters!
-                  </clr-control-error>
+                  <clr-control-error *clrIfError="'required'">Password is required!</clr-control-error>
+                  <clr-control-error *clrIfError="'minlength'">It must be at least 8 characters</clr-control-error>
               </clr-password-container>
           </div>
           <div class="passwd">

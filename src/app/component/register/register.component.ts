@@ -2,6 +2,10 @@ import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
 
+const REGEXNAME = new RegExp("[A-Z]{1}[a-z]{2,}");
+const REGEXEMAIL = new RegExp("^[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-])*@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*$");
+const REGEXPASSWORd = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}");
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -13,10 +17,10 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.form = this.formBuilder.group({
-      fname:['',[Validators.required]],
-      lname:['',[Validators.required]],
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      fname:['',[Validators.required],Validators.pattern(REGEXNAME)],
+      lname:['',[Validators.required],Validators.pattern(REGEXNAME)],
+      email: ['', [Validators.required, Validators.email],Validators.pattern(REGEXEMAIL)],
+      password: ['', Validators.required,Validators.pattern(REGEXPASSWORd)]
     });
   }
 
