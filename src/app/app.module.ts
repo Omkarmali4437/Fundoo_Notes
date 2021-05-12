@@ -14,6 +14,8 @@ import { FundooheaderComponent } from './component/fundooheader/fundooheader.com
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { DashboardComponent } from './component/dashboard/dashboard.component';
+import { DisplayComponent } from './component/display/display.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     ResetpasswordComponent,
     ForgotpasswordComponent,
-    FundooheaderComponent
+    FundooheaderComponent,
+    DashboardComponent,
+    DisplayComponent
   ],
   imports: [
     BrowserModule,

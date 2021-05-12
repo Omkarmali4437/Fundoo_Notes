@@ -15,7 +15,7 @@ export class ForgotpasswordComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder,  private userService: UserService) {
     this.form = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email],Validators.pattern(REGEXEMAIL)],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 

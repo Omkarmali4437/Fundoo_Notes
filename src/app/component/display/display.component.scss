@@ -1,0 +1,45 @@
+.card1{
+    width: 600px;
+    min-height:50px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-sizing: "inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);";
+}
+
+.card2{
+    width: 600px;
+    min-height: 150px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    box-sizing: "inset 1px 1px 0 rgb(0 0 0 / 10%), inset 0 -1px 0 rgb(0 0 0 / 7%);";
+}
+
+.form{
+    border: 1px solid gray;
+    border-radius: 10px;
+    width: 600px;
+    min-height: 300px;;
+}
+
+.title{
+    width: 550px;
+    height: 50px;
+}
+
+.description{
+    width: 550px;
+}
+
+.btn{
+    align-items: bottom;
+}
+
+.newnote{
+    margin-top:20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width:150px;
+    min-height: 40px;
+    border: 1px solid grey;
+    border-radius:10px
+}

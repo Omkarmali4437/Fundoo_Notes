@@ -1,5 +1,6 @@
 import { Component, NgModule, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { id } from '@cds/core/internal';
 import { UserService } from '../../services/user/user.service';
 
 const REGEXNAME = new RegExp("[A-Z]{1}[a-z]{2,}");
@@ -17,11 +18,15 @@ export class RegisterComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.form = this.formBuilder.group({
-      fname:['',[Validators.required],Validators.pattern(REGEXNAME)],
-      lname:['',[Validators.required],Validators.pattern(REGEXNAME)],
-      email: ['', [Validators.required, Validators.email],Validators.pattern(REGEXEMAIL)],
-      password: ['', Validators.required,Validators.pattern(REGEXPASSWORd)]
+      fname:['',[Validators.required]],
+      lname:['',[Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
+  }
+
+  public hasError = (controlName: string, errorName: string) => {
+      return this.form.controls[controlName].hasError(errorName);
   }
 
   ngOnInit(): void {
@@ -42,6 +47,7 @@ export class RegisterComponent implements OnInit {
       console.log(reqObj);
 
       this.userService.registerService(reqObj).subscribe((res) => {
+        console.log(res);
         console.log(res);
       },(error) => {
         console.log(error);

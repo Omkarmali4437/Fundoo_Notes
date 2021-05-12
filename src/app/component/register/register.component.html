@@ -10,6 +10,9 @@
                   <input clrInput formControlName="fname" placeholder="Enter FirstName" name="fname" required />
                   <label>FirstName</label>
                   <clr-control-error *clrIfError="'required'">FirstName is required!</clr-control-error>
+                  <clr-control-error *ngIf="form.hasError('fname', 'required')">Name is required</clr-control-error>
+                  <clr-control-error *ngIf="form.hasError('fname', 'minlength')">name should be more than 3 char
+                  </clr-control-error>
               </clr-input-container>
           </div>
           <div class="name">
@@ -31,7 +34,7 @@
           <div class="passwd">
               <clr-password-container>
                   <label>Password</label>
-                  <input placeholder="Password" clrPassword formControlName="password" name="password" required minlength="10" />
+                  <input placeholder="Password" clrPassword formControlName="password" name="password" required minlength="8" />
                   <clr-control-helper>Use 8 or more characters with <br />
                       a mix of letters, numbers & symbols
                   </clr-control-helper>
@@ -48,7 +51,7 @@
           </div>
           <br>
           <div class="lastline">
-              <a href="" class="line">Sign in instead</a>
+              <a routerLink="/login" class="line">Sign in instead</a>
                   <button class="btn btn-primary" >Next</button>
           </div>
       </div>
