@@ -21,11 +21,11 @@
 <div fxLayout="row" fxLayoutAlign="start center" class="note-contents">
     <form *ngFor='let card of cardArray' class="newnote">
         <div class="newcard card-header">
-            {{card[0].title}}
+            {{card.title}}
         </div>
         <div class="newcardblock card-block">
             <div class="card-text">
-                {{card[0].description}}
+                {{card.description}}
             </div>
         </div>
     </form>

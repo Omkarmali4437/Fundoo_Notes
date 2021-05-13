@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AnyCnameRecord } from 'node:dns';
 import { UserService } from  '../../services/user/user.service';
 
 const REGEXEMAIL = new RegExp("^[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-])*@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*$");
@@ -25,8 +24,8 @@ export class LoginComponent implements OnInit {
   submit(){
     if (this.form.valid) {
       console.log(this.form.value);
-
-      let id ;
+      
+      let array = [] as any;
 
       let reqObj = {
         email:this.form.value.email,
@@ -37,8 +36,9 @@ export class LoginComponent implements OnInit {
       
       this.userService.loginService(reqObj).subscribe((res) => {
         console.log(res);
-        console.log(res.id);
-        localStorage.setItem('id',res.id);
+        array = res;
+        console.log(array.id);
+        localStorage.setItem('id',array.id);
       },(error) => {
         console.log(error);
       });

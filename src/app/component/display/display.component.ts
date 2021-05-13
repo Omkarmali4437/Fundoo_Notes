@@ -22,20 +22,17 @@ export class DisplayComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getNoteList();
+  }
 
+  getNoteList(){
     let id = localStorage.getItem('id');
+    let arr = [] as any;
+    
     this.userService.getNoteList(id).subscribe((res) => {
-      let length = res.data.data.length;
-      console.log(length);
-
-      for (let i = 0; i < length; i++) {
-        this.cardArray[i] = [{
-          title: res.data.data[i].title,
-          description: res.data.data[i].description
-        }]
-      }
+      arr = res;  
+      this.cardArray = arr.data.data;
       console.log(this.cardArray);
-
     })
   }
 
@@ -57,24 +54,11 @@ export class DisplayComponent implements OnInit {
 
       this.userService.createNote(reqObj, id).subscribe((res) => {
         console.log(res);
-
+        this.getNoteList();
       }, (error) => {
         console.log(error);
       })
 
-      this.userService.getNoteList(id).subscribe((res) => {
-        let length = res.data.data.length;
-        console.log(length);
-
-        for (let i = 0; i < length; i++) {
-          this.cardArray[i] = [{
-            title: res.data.data[i].title,
-            description: res.data.data[i].description
-          }]
-        }
-        console.log(this.cardArray);
-
-      })
     }
   }
 
