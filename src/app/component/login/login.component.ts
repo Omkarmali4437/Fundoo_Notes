@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from  '../../services/user/user.service';
+import { Router } from '@angular/router';
 
 const REGEXEMAIL = new RegExp("^[A-Za-z0-9_-]+(\\.[A-Za-z0-9_-])*@[A-Za-z0-9-]+(?:\\.[A-Za-z0-9-]+)*$");
 const REGEXPASSWORd = new RegExp("^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=[^$@!#%*?&]*[$#@!%*?&][^$@!#%*?&]*$).{8,}");
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder , private userService: UserService) {
+  constructor(private formBuilder: FormBuilder , private userService: UserService,private router: Router) {
     this.form = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
@@ -39,6 +40,7 @@ export class LoginComponent implements OnInit {
         array = res;
         console.log(array.id);
         localStorage.setItem('id',array.id);
+        this.router.navigate(['dashboard']);
       },(error) => {
         console.log(error);
       });
