@@ -2,13 +2,21 @@
     <div *ngIf='!show' (click)='show=!show' class="card1">
         <label for="" class="note">Take a note</label>
     </div>
-    <form clrForm [formGroup]="form" class="card2" *ngIf='show' class="form">
+    <form clrForm [formGroup]="form" class="card2" *ngIf='show' >
         <div>
             <textarea placeholder="Title" formControlName="title" clrTextarea class="title" name="title" required></textarea>
         </div>
         <div>
             <textarea placeholder="Description" formControlName="description" clrTextarea class="description" name="description" required></textarea>
-            <button class="btn btn-sm" (click)="submit()">Close</button>
+            <div fxLayout="row" fxLayoutAlign="space-between center">
+                <cds-icon shape="bell"></cds-icon>
+                <cds-icon shape="user"></cds-icon>
+                <cds-icon shape="color-palette"></cds-icon>
+                <cds-icon shape="image-gallery"></cds-icon>
+                <cds-icon shape="archive"></cds-icon>
+                <cds-icon shape="ellipsis-vertical"></cds-icon>
+                <button class="btn btn-sm" (click)="submit()">Close</button>
+            </div>
         </div>
     </form>
 </div>
@@ -22,6 +30,14 @@
             <div >
                 <div>
                     <textarea name="" class="description-new" value={{card.description}} id="" cols="10" rows="10"></textarea>
+                    <div fxLayout="row" fxLayoutAlign="space-between center" class="icons">
+                        <cds-icon shape="bell"></cds-icon>
+                        <cds-icon shape="user"></cds-icon>
+                        <cds-icon shape="color-palette"></cds-icon>
+                        <cds-icon shape="image-gallery"></cds-icon>
+                        <cds-icon shape="archive"></cds-icon>
+                        <cds-icon shape="ellipsis-vertical"></cds-icon>
+                    </div>
                 </div>
             </div>
         </div>
@@ -36,6 +52,14 @@
                 <textarea name="" class="description-new1" formControlName="description" id="" value={{detail.description}} cols="10" rows="10"></textarea>
             </div>
             <div class="modal-footer">
+                <div fxLayout="row" fxLayoutAlign="start space-between" class="icon">
+                    <cds-icon shape="bell" size="lg" class="bell"></cds-icon>
+                    <cds-icon shape="user" size="lg" class="user"></cds-icon>
+                    <cds-icon shape="color-palette" size="lg" class="clr"></cds-icon>
+                    <cds-icon shape="image-gallery" size="lg" class="img"></cds-icon>
+                    <cds-icon shape="archive" size="lg" class="arch"></cds-icon>
+                    <cds-icon shape="ellipsis-vertical" size="lg" class="ell"></cds-icon>
+                </div>
                 <cds-icon size="lg" shape="trash" (click)="deleteNote()"></cds-icon>
                 <button type="button" class="btn btn-primary" (click)="updateNote()">Close</button>
             </div>

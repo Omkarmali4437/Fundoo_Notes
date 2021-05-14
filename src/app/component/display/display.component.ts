@@ -1,9 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
-import { ClarityIcons,trashIcon } from '@cds/core/icon';
+import { ClarityIcons,trashIcon,bellIcon,userIcon,colorPaletteIcon,imageGalleryIcon,archiveIcon,ellipsisVerticalIcon } from '@cds/core/icon';
 
 ClarityIcons.addIcons(trashIcon);
+ClarityIcons.addIcons(bellIcon);
+ClarityIcons.addIcons(userIcon);
+ClarityIcons.addIcons(colorPaletteIcon);
+ClarityIcons.addIcons(imageGalleryIcon);
+ClarityIcons.addIcons(archiveIcon);
+ClarityIcons.addIcons(ellipsisVerticalIcon);
 
 @Component({
   selector: 'app-display',
@@ -18,6 +24,7 @@ export class DisplayComponent implements OnInit {
   detail = [] as any;
   form: FormGroup;
   cardArray = [] as any;
+  deleted = [] as any;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
     this.form = this.formBuilder.group({
@@ -32,18 +39,19 @@ export class DisplayComponent implements OnInit {
   }
 
   getNoteList(){
+    this.openModal = false;
     let id = localStorage.getItem('id');
     let arr = [] as any;
     
     this.userService.getNoteList(id).subscribe((res) => {
       arr = res;  
+      console.log(res);
+      console.log(arr);
       this.cardArray = arr.data.data;
-      console.log(this.cardArray[0].id);
+      console.log(this.cardArray);
+      console.log(this.cardArray[2].isDeleted);
+      console.log(this.cardArray);
     })
-  }
-
-  trackByMethod( el:any): number {
-    return el.id;
   }
 
   getId(card : any){
@@ -103,6 +111,7 @@ export class DisplayComponent implements OnInit {
   }
 
   deleteNote(){
+    this.openModal = false;
     
     let token = localStorage.getItem('id');
     let reqObj = {
