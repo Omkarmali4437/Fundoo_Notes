@@ -1,32 +1,48 @@
-<div>
+<div fxLayout="row" fxLayoutAlign="center start">
     <div *ngIf='!show' (click)='show=!show' class="card1">
-        <label for="" class="note" style="margin-top: 50px;">Take a note</label>
+        <label for="" class="note">Take a note</label>
     </div>
     <form clrForm [formGroup]="form" class="card2" *ngIf='show' class="form">
-        <div class="card-header">
+        <div>
             <textarea placeholder="Title" formControlName="title" clrTextarea class="title" name="title" required></textarea>
         </div>
-        <div class="card-block">
-            <div class="card-text">
-                <textarea placeholder="Description" formControlName="description" clrTextarea class="description" name="description"
-                    required></textarea>
-            </div>
-        </div>
-        <div class="card-footer">
+        <div>
+            <textarea placeholder="Description" formControlName="description" clrTextarea class="description" name="description" required></textarea>
             <button class="btn btn-sm" (click)="submit()">Close</button>
         </div>
     </form>
 </div>
 
-<div fxLayout="row" fxLayoutAlign="start center" class="note-contents">
-    <form *ngFor='let card of cardArray' class="newnote">
-        <div class="newcard card-header">
-            {{card.title}}
+<div fxLayout="row wrap" fxLayoutAlign="start center"  class="note-contents">
+    <form (click)='openModal=!openModal' *ngFor='let card of cardArray' class="newnote">
+        <div>
+            <textarea (click)="getId(card)" name="" class="title-new" value={{card.title}} id="" cols="10" rows="10"></textarea>
         </div>
-        <div class="newcardblock card-block">
-            <div class="card-text">
-                {{card.description}}
+        <div >
+            <div>
+                <textarea name="" class="description-new" value={{card.description}} id="" cols="10" rows="10"></textarea>
             </div>
         </div>
+
     </form>
+
+    <form clrForm [formGroup]="form">
+        <clr-modal [(clrModalOpen)]="openModal">
+            <h3 class="modal-title">
+                <textarea name="" formControlName="title" class="title-new" value={{detail.title}} id="" cols="10" rows="10"></textarea>
+            </h3>
+            <div class="modal-body">
+                <textarea name="" class="description-new" formControlName="description" id="" value={{detail.description}} cols="10" rows="10"></textarea>
+            </div>
+            <div>
+                <cds-icon shape="trash"></cds-icon>
+
+            </div>
+            <div class="modal-footer">
+                <cds-icon size="lg" shape="trash" (click)="deleteNote()"></cds-icon>
+                <button type="button" class="btn btn-primary" (click)="updateNote()">Close</button>
+            </div>
+        </clr-modal>
+    </form>
+
 </div>

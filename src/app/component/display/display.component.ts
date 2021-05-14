@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user/user.service';
+import { ClarityIcons,trashIcon } from '@cds/core/icon';
+
+ClarityIcons.addIcons(trashIcon);
 
 @Component({
   selector: 'app-display',
@@ -10,6 +13,9 @@ import { UserService } from '../../services/user/user.service';
 export class DisplayComponent implements OnInit {
 
   public show = false;
+  public display = false;
+  public openModal = false;
+  detail = [] as any;
   form: FormGroup;
   cardArray = [] as any;
 
@@ -32,8 +38,17 @@ export class DisplayComponent implements OnInit {
     this.userService.getNoteList(id).subscribe((res) => {
       arr = res;  
       this.cardArray = arr.data.data;
-      console.log(this.cardArray);
+      console.log(this.cardArray[0].id);
     })
+  }
+
+  trackByMethod( el:any): number {
+    return el.id;
+  }
+
+  getId(card : any){
+    this.detail = card;
+    console.log(this.detail);
   }
 
   submit() {
@@ -60,6 +75,47 @@ export class DisplayComponent implements OnInit {
       })
 
     }
+  }
+
+  updateNote(){
+    console.log("Method called");
+    this.openModal = false;
+    
+    let id = this.detail.id;
+    console.log(id);
+
+    let token = localStorage.getItem('id');
+
+    let reqObj = {
+      noteId: id,
+      title :  this.form.value.title ,
+      description : this.form.value.description
+    }
+
+    console.log(reqObj);
+
+    this.userService.updateNote(reqObj,token).subscribe((res) => {
+      console.log(res);
+      this.getNoteList();
+    },(error) => {
+      console.log(error);
+    })
+  }
+
+  deleteNote(){
+    
+    let token = localStorage.getItem('id');
+    let reqObj = {
+      "isDeleted": true,
+      "noteIdList": [this.detail.id]
+    }
+
+    this.userService.deleteNote(reqObj,token).subscribe((res) => {
+      console.log(res);
+      this.getNoteList();
+    },(error) => {
+      console.log(error);        
+    })
   }
 
 }
