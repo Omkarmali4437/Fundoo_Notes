@@ -17,8 +17,6 @@ export class UserService {
     return formBody.join('&');
   }
 
-  
-
   constructor(private http: HttpService) { }
 
   loginService(data : any){
@@ -46,8 +44,6 @@ export class UserService {
   }
 
   createNote(data: any , id: any){
-
-    
     let options = {
       headers: new HttpHeaders({
         'Authorization': id,
@@ -92,5 +88,17 @@ export class UserService {
       })
     }
     return this.http.post('notes/trashNotes',data,options);
+  }
+
+  logout(id : any){
+    let options = {
+      headers: new HttpHeaders({
+        'Authorization': id,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      })
+    }
+    return this.http.post('notes/logout',"",options);
+
   }
 }
