@@ -16,27 +16,24 @@
 <div fxLayout="row wrap" fxLayoutAlign="start center"  class="note-contents">
     <form (click)='openModal=!openModal' *ngFor='let card of cardArray' class="newnote">
         <div>
-            <textarea (click)="getId(card)" name="" class="title-new" value={{card.title}} id="" cols="10" rows="10"></textarea>
-        </div>
-        <div >
             <div>
-                <textarea name="" class="description-new" value={{card.description}} id="" cols="10" rows="10"></textarea>
+                <textarea (click)="getId(card)" name="" class="title-new" value={{card.title}} id="" cols="10" rows="10"></textarea>
+            </div>
+            <div >
+                <div>
+                    <textarea name="" class="description-new" value={{card.description}} id="" cols="10" rows="10"></textarea>
+                </div>
             </div>
         </div>
-
     </form>
 
     <form clrForm [formGroup]="form">
         <clr-modal [(clrModalOpen)]="openModal">
             <h3 class="modal-title">
-                <textarea name="" formControlName="title" class="title-new" value={{detail.title}} id="" cols="10" rows="10"></textarea>
+                <textarea name="" formControlName="title" class="title-new1" value={{detail.title}} id="" cols="10" rows="10"></textarea>
             </h3>
             <div class="modal-body">
-                <textarea name="" class="description-new" formControlName="description" id="" value={{detail.description}} cols="10" rows="10"></textarea>
-            </div>
-            <div>
-                <cds-icon shape="trash"></cds-icon>
-
+                <textarea name="" class="description-new1" formControlName="description" id="" value={{detail.description}} cols="10" rows="10"></textarea>
             </div>
             <div class="modal-footer">
                 <cds-icon size="lg" shape="trash" (click)="deleteNote()"></cds-icon>
