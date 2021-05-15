@@ -41,7 +41,8 @@ export class DashboardComponent implements OnInit {
 
     this.userService.logout(id).subscribe((res) => {
       console.log(res);
-      this.router.navigate(['login'])
+      this.router.navigate(['login']);
+      localStorage.removeItem('id');
     },(error) => {
       console.log(error);
     })

@@ -1,6 +1,6 @@
 <div fxLayout="row" fxLayoutAlign="center start">
-    <div *ngIf='!show' (click)='show=!show' class="card1">
-        <label for="" class="note">Take a note</label>
+    <div *ngIf='!show' (click)='show=!show' class="card1" fxLayout="row" fxLayoutAlign="start center">
+        <label for="" class="note" >Take a note</label>
     </div>
     <form clrForm [formGroup]="form" class="card2" *ngIf='show' >
         <div>
@@ -27,7 +27,7 @@
             <div>
                 <textarea (click)="getId(card)" name="" class="title-new" value={{card.title}} id="" cols="10" rows="10"></textarea>
             </div>
-            <div >
+            <div>
                 <div>
                     <textarea name="" class="description-new" value={{card.description}} id="" cols="10" rows="10"></textarea>
                     <div fxLayout="row" fxLayoutAlign="space-between center" class="icons">
